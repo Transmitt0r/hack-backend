@@ -11,7 +11,7 @@ mongo_uri = os.environ['MONGODB_URI']
 basic_user = os.environ['FLASK_BASIC_AUTH_USERNAME']
 basic_password = os.environ['FLASK_BASIC_AUTH_PASSWORD']
 
-db = MongoClient(mongo_uri).get_database()
+db = MongoClient(mongo_uri, retryWrites=False).get_database()
 
 db.api.create_index("uid", unique=True)
 
